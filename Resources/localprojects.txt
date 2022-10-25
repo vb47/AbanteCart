@@ -2,3 +2,4 @@ Topic - Package Name
 
 Login,Logout - Login
 Checkout,Currency - Checkout
+View Product - viewProduct
