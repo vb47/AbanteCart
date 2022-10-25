@@ -1,6 +1,7 @@
 package modules;
 
 import java.io.*;
+import java.time.Duration;
 import java.util.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -65,6 +66,9 @@ public class HomePage {
 		int i=0;
 		List<WebElement> productsOnPage;
 		String[] list;
+		
+		driver.get("https://demo.abantecart.com/");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 		
 		switch(categoryIndex) {
 		case 0:
@@ -513,7 +517,7 @@ public class HomePage {
 			  	  		data.add(new String[] { "3", Integer.toString(i), productName, productHref });
 			  	  	}
 		  	  	}
-	  	  	} // yaha tak tha mera safar abb tak
+	  	  	}
 	  	
 		  	// Category: (4, 1-2)
 		  	for(int i=1; i<=2; i++) {
@@ -521,56 +525,51 @@ public class HomePage {
 		  		for(int i1=0;i1<productList1.length; i1++) {
 		  	  		productName = productList1[i1++];
 		  	  		productHref = productList1[i1];
-		  	  	if(productName.length() > 1) {
-		  	  		System.out.println(productName + " > " + productHref);
-		  	  		data.add(new String[] { "4", Integer.toString(i), productName, productHref });
-		  	  	}
-		  	  	}
-		  	  		
+			  	  	if(productName.length() > 1) {
+			  	  		//System.out.println(productName + " > " + productHref);
+			  	  		data.add(new String[] { "4", Integer.toString(i), productName, productHref });
+			  	  	}
+	  	  		}	
+		  	}
+	  	
+		  	// Category: (5, 1-4)
+		  	for(int i=1; i<=4; i++) {
+		  		String[] productList1 = this.getProductList(5, i);
+				for(int i1=0;i1<productList1.length; i1++) {
+			  	  	productName = productList1[i1++];
+			  	  	productHref = productList1[i1];
+			  	  	if(productName.length() > 1) {
+			  	  		//System.out.println(productName + " > " + productHref);
+			  	  		data.add(new String[] { "5", Integer.toString(i), productName, productHref });
+			  	  	}
+			  	 }	
 			  }
 	  	
-	  	// Category: (5, 1-4)
-	  	for(int i=1; i<=4; i++) {
-			  String[] productList1 = this.getProductList(5, i);
-			  for(int i1=0;i1<productList1.length; i1++) {
-		  	  		productName = productList1[i1++];
-		  	  		productHref = productList1[i1];
-		  	  	if(productName.length() > 1) {
-		  	  		System.out.println(productName + " > " + productHref);
-		  	  	data.add(new String[] { "5", Integer.toString(i), productName, productHref });
-		  	  		}
-		  	  	}
-	  	  		
-		  }
+		  	// Category: (6, 1-2)
+		  	for(int i=1; i<=2; i++) {
+				String[] productList1 = this.getProductList(6, i);
+				for(int i1=0;i1<productList1.length; i1++) {
+			  		productName = productList1[i1++];
+			  		productHref = productList1[i1];
+			  	  	if(productName.length() > 1) {
+			  	  		//System.out.println(productName + " > " + productHref);
+			  	  		data.add(new String[] { "6", Integer.toString(i), productName, productHref });
+			  	  	}
+			  	}
+			}
 	  	
-	  	// Category: (6, 1-2)
-	  	for(int i=1; i<=2; i++) {
-			  String[] productList1 = this.getProductList(6, i);
-			  for(int i1=0;i1<productList1.length; i1++) {
-		  	  		productName = productList1[i1++];
-		  	  		productHref = productList1[i1];
-		  	  	if(productName.length() > 1) {
-		  	  		System.out.println(productName + " > " + productHref);
-		  	  	data.add(new String[] { "6", Integer.toString(i), productName, productHref });
-		  	  		}
-		  	  	}
-	  	  		
-		  }
-	  	
-	  	// Category: (7, 1-2)
-	  	for(int i=1; i<=2; i++) {
-			  String[] productList1 = this.getProductList(7, i);
-			  for(int i1=0;i1<productList1.length; i1++) {
-		  	  		productName = productList1[i1++];
-		  	  		productHref = productList1[i1];
-		  	  	if(productName.length() > 1) {
-		  	  		System.out.println(productName + " > " + productHref);
-		  	  	data.add(new String[] { "7", Integer.toString(i), productName, productHref });
-		  	  		} 
-		  	  	}
-	  	  		
-		  }
-	        // -------------------------- //
+		  	// Category: (7, 1-2)
+		  	for(int i=1; i<=2; i++) {
+				String[] productList1 = this.getProductList(7, i);
+				for(int i1=0;i1<productList1.length; i1++) {
+			  	  	productName = productList1[i1++];
+			  	  	productHref = productList1[i1];
+				  	if(productName.length() > 1) {
+				  		//System.out.println(productName + " > " + productHref);
+				  	  	data.add(new String[] { "7", Integer.toString(i), productName, productHref });
+				  	} 
+				}	
+		  	}
 	        
 	        writer.writeAll(data);
 	  
@@ -578,10 +577,7 @@ public class HomePage {
 	        writer.close();
 	    }
 	    catch (IOException e) {
-	        // TODO Auto-generated catch block
 	        e.printStackTrace();
 	    }
 	}
-	
-	
 }

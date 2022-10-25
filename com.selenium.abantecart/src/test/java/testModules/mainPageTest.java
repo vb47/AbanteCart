@@ -6,6 +6,7 @@ package testModules;
 import org.testng.annotations.Test;
 
 import modules.AbanteCart;
+import modules.HomePage;
 import modules.mainPage;
 
 import org.testng.annotations.BeforeTest;
@@ -16,12 +17,12 @@ import org.testng.annotations.AfterTest;
 public class mainPageTest {
 	WebDriver driver;
 	AbanteCart cart;
+	HomePage page;
 	
   @Test
   public void fudduTest(){
-	  cart = new AbanteCart(driver);
-	  cart.openWebsite();
-	  
+	  page = new HomePage(driver);
+	  page.generateProductList();
   }
   @BeforeTest
   public void beforeTest() {
@@ -30,8 +31,9 @@ public class mainPageTest {
 
   @AfterTest
   public void afterTest() throws InterruptedException {
-	  Thread.sleep(5000);
-	  cart.closeWebsite();
+	  Thread.sleep(3000);
+	  driver.quit();
+	  
   }
 
 }
