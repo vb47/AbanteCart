@@ -583,4 +583,31 @@ public class HomePage extends AbanteCart{
 	        e.printStackTrace();
 	    }
 	}
+	
+	/*
+	 * Method: searchProductByName
+	 * Parameters: productName (String)
+	 * Description: Visits the product link.
+	 */
+	public void searchProductByName(String productName) {
+		productName = productName.toUpperCase();
+		super.openWebsite(super.getUrl());
+		driver.findElement(By.id("filter_keyword")).sendKeys(productName);
+		driver.findElement(By.xpath("//*[@id='search_form']/div/div/i")).click();
+	}
+	
+	/*
+	 * Method: getPriceOfProduct
+	 * Parameters: productName (String)
+	 * Return: (Double) price of product
+	 * Description: Visits the product link, returns product price.
+	 */
+	public Double getPriceOfProduct(String productName){
+		this.searchProductByName(productName);
+		driver.findElement(By.xpath("//a[contains(text(),\""+productName+"\")]")).click();
+		String priceOfProduct = driver.findElement(By.className("productfilneprice")).getText();
+		return Double.parseDouble(priceOfProduct.substring(1));
+	}
+	
+	// TODO: testSocialMediaIcons baki reh gaya maa. 
 }

@@ -21,7 +21,17 @@ public class mainPageTest {
   @Test
   public void fudduTest(){
 	  cart = new HomePage(driver);
-	  cart.generateProductList();
+	  //cart.generateProductList();
+	  
+	  cart.searchProductByName("ck one shock for him Deodorant");
+	  
+	  cart.searchProductByName("Paper Towns by John Green");
+	  
+	  Double price1 = cart.getPriceOfProduct("Ruby Shoo Womens Jada T-Bar");
+	  Double price2 = cart.getPriceOfProduct("Lancome Hypnose Doll Lashes Mascara 4-Piece Gift Set");
+	  
+	  System.out.println("Price of  Ruby Shoo Womens Jada T-Bar is $" + price1 + "/-");
+	  System.out.println("Price of Lancome Hypnose Doll Lashes Mascara 4-Piece Gift Set is &" + price2 + "/-");
   }
   @BeforeTest
   public void beforeTest() {
