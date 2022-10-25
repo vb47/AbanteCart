@@ -12,15 +12,15 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.opencsv.CSVWriter;
 
-
 /*
  * Class: HomePage
  * Parameters: driver (WebDriver)
  * Parent Class: AbanteCart
  * Description: Child class to handle operations related to homepage of AbanteCart.
  */
-public class HomePage {
+public class HomePage extends AbanteCart{
 	WebDriver driver;
+	String datasetFilePath = "./data/datasets/productList.csv";
 	
 	/*
 	 * Page Objects for Home Page
@@ -50,6 +50,7 @@ public class HomePage {
 	WebElement categoryBooksElement;
 	
 	public HomePage(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -67,8 +68,7 @@ public class HomePage {
 		List<WebElement> productsOnPage;
 		String[] list;
 		
-		driver.get("https://demo.abantecart.com/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+		super.openWebsite();
 		
 		switch(categoryIndex) {
 		case 0:
@@ -449,11 +449,14 @@ public class HomePage {
 		return list;
 	}
 	
+	/*
+	 * Method: generateProductList
+	 * Description: It generates a productList.csv dataset file that contains category index, subcategory index, title and links of all products in AbanteCart.
+	 */
 	public void generateProductList() {
-		String filePath = "./data/datasets/productList.csv";
-		File file = new File(filePath);
+		File file = new File(datasetFilePath);
 		
-		  
+		// Exception Handling for IOException, if file path is invalid.
 	    try {
 	        // FileWriter object with file as parameter
 	        FileWriter outputfile = new FileWriter(file);

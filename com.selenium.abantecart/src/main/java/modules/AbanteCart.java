@@ -61,7 +61,6 @@ public class AbanteCart {
 	 */
 	public void openWebsite(String url) {
 		driver.get(url);
-		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(this.ImplicitWaitTime));
 	}
 	
