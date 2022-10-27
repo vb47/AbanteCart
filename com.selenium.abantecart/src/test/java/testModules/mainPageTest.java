@@ -41,13 +41,22 @@ public class mainPageTest {
 //	  
 //	  System.out.println("Price of  Ruby Shoo Womens Jada T-Bar is $" + price1 + "/-");
 //	  System.out.println("Price of Lancome Hypnose Doll Lashes Mascara 4-Piece Gift Set is &" + price2 + "/-");
-	  account = new UserAccount(driver);
-	  List<String> response = account.userRegistration("./data/datasets/accountRegistration.csv");
-	  for(String data: response) {
-		  System.out.println(data);
-	  }
 	  
+//	  // User registration testing sample
+//	  account = new UserAccount(driver);
+//	  List<String> response = account.userRegistration("./data/datasets/accountRegistration.csv");
+//	  for(String data: response) {
+//		  System.out.println(data);
+//	  }
+	  
+	  // Login and logout testing
+	  account = new UserAccount(driver);
+	  account.login("Vaibhav", "jaaNahiBatata");
+	  Thread.sleep(3000);
+	  account.logout();
+	  // TODO: DDT on login functionality
   }
+  
   @BeforeTest
   public void beforeTest() {
 	  driver = new ChromeDriver();

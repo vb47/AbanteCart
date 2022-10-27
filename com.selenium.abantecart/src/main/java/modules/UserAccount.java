@@ -63,6 +63,19 @@ public class UserAccount extends AbanteCart{
 	@FindBy(xpath = "//*[@id=\"maincontainer\"]/div/div[1]/div/h1/span[1]/text()")
 	private WebElement success;
 	
+	@FindBy(id = "customer_menu_top")
+	public WebElement menubar;
+	@FindBy(id = "loginFrm_loginname")
+	public WebElement login_name;
+	@FindBy(id = "loginFrm_password")
+	public WebElement loginpassword;
+	@FindBy(xpath = "//*[@id='loginFrm']/fieldset/button")
+	public WebElement loginbutton;
+	@FindBy(xpath = "//*[@id='main_menu_top']/li[2]/a/span")
+	public WebElement logoutmenu;
+	@FindBy(xpath = "//*[@id='maincontainer']/div/div[2]/div[1]/div/ul/li[10]/a")
+	public WebElement logoutbutton;
+	
 	public UserAccount(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -118,7 +131,34 @@ public class UserAccount extends AbanteCart{
 			 
 		  }
 		 return response;
-		
+	}
+	
+	/*
+	 * method: login
+	 * parameters: username (String)
+	 * 			   password (String)
+	 * Description: Performs login operation using given credentials.
+	 * Return: Response message post login process
+	 */
+	public void login(String username, String password) {
+		super.openWebsite();
+		if(menubar.getText().contains("Login")) {
+			menubar.click();
+			login_name.sendKeys(username);
+			loginpassword.sendKeys(password);
+			loginbutton.click();
+		}
+	}
+	
+	/*
+	 * method: logout
+	 * Description: performs logout operation.
+	 */
+	public void logout() {
+		if(menubar.getText().contains("Welcome")) {
+			logoutmenu.click();
+			logoutbutton.click();
+		}
 	}
 	
 }
