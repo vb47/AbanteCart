@@ -5,11 +5,18 @@ package testModules;
 
 import org.testng.annotations.Test;
 
+import com.opencsv.exceptions.CsvValidationException;
+
 import modules.AbanteCart;
 import modules.HomePage;
+import modules.UserAccount;
 import modules.mainPage;
 
 import org.testng.annotations.BeforeTest;
+
+import java.io.IOException;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -17,21 +24,29 @@ import org.testng.annotations.AfterTest;
 public class mainPageTest {
 	WebDriver driver;
 	HomePage cart;
+	UserAccount account;
 	
   @Test
-  public void fudduTest(){
-	  cart = new HomePage(driver);
-	  //cart.generateProductList();
+  public void fudduTest() throws CsvValidationException, IOException, InterruptedException{
+//	  //Test Cases for Home Page
+//	  cart = new HomePage(driver);
+//	  //cart.generateProductList();
+//	  
+//	  cart.searchProductByName("ck one shock for him Deodorant");
+//	  
+//	  cart.searchProductByName("Paper Towns by John Green");
+//	  
+//	  Double price1 = cart.getPriceOfProduct("Ruby Shoo Womens Jada T-Bar");
+//	  Double price2 = cart.getPriceOfProduct("Lancome Hypnose Doll Lashes Mascara 4-Piece Gift Set");
+//	  
+//	  System.out.println("Price of  Ruby Shoo Womens Jada T-Bar is $" + price1 + "/-");
+//	  System.out.println("Price of Lancome Hypnose Doll Lashes Mascara 4-Piece Gift Set is &" + price2 + "/-");
+	  account = new UserAccount(driver);
+	  List<String> response = account.userRegistration("./data/datasets/accountRegistration.csv");
+	  for(String data: response) {
+		  System.out.println(data);
+	  }
 	  
-	  cart.searchProductByName("ck one shock for him Deodorant");
-	  
-	  cart.searchProductByName("Paper Towns by John Green");
-	  
-	  Double price1 = cart.getPriceOfProduct("Ruby Shoo Womens Jada T-Bar");
-	  Double price2 = cart.getPriceOfProduct("Lancome Hypnose Doll Lashes Mascara 4-Piece Gift Set");
-	  
-	  System.out.println("Price of  Ruby Shoo Womens Jada T-Bar is $" + price1 + "/-");
-	  System.out.println("Price of Lancome Hypnose Doll Lashes Mascara 4-Piece Gift Set is &" + price2 + "/-");
   }
   @BeforeTest
   public void beforeTest() {
@@ -41,7 +56,7 @@ public class mainPageTest {
   @AfterTest
   public void afterTest() throws InterruptedException {
 	  Thread.sleep(3000);
-	  cart.closeWebsite();
+	  account.closeWebsite();
   }
 
 }

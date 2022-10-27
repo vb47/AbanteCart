@@ -16,7 +16,7 @@ public class AbanteCart {
 	Integer numberOfItemsInCart;
 	String itemsInCart[];
 	Double totalAmount;
-	Integer ImplicitWaitTime = 5;
+	protected Integer ImplicitWaitTime = 5;
 	
 	public AbanteCart(WebDriver driver) {
 		this.driver = driver;
