@@ -17,12 +17,14 @@ import org.testng.annotations.BeforeTest;
 import java.io.IOException;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 
 public class mainPageTest {
 	WebDriver driver;
+	AbanteCart page;
 	HomePage cart;
 	UserAccount account;
 	
@@ -49,11 +51,41 @@ public class mainPageTest {
 //		  System.out.println(data);
 //	  }
 	  
-	  // Login and logout testing
-	  account = new UserAccount(driver);
-	  account.login("Vaibhav", "jaaNahiBatata");
-	  Thread.sleep(3000);
-	  account.logout();
+//	  // Login and logout testing
+//	  account = new UserAccount(driver);
+//	  account.login("Vaibhav", "jaaNahiBatata");
+//	  Thread.sleep(3000);
+//	  account.logout();
+	  
+	  // Get Cart Details
+	  page = new AbanteCart(driver);
+	  cart = new HomePage(driver);
+	  
+	  cart.searchProductByName("ck one shock for him Deodorant");
+	  driver.findElement(By.id("product_quantity")).clear();
+	  driver.findElement(By.id("product_quantity")).sendKeys("3");
+	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
+	  
+	  cart.searchProductByName("Jersey Cotton Striped Polo Shirt");
+	  driver.findElement(By.id("product_quantity")).clear();
+	  driver.findElement(By.id("product_quantity")).sendKeys("4");
+	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
+	  
+	  cart.searchProductByName("Armani Code Sport");
+	  driver.findElement(By.id("product_quantity")).clear();
+	  driver.findElement(By.id("product_quantity")).sendKeys("2");
+	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
+	  
+	  String[][] cartDetails = page.getCartDetails();
+	  
+	  int cartLength = cartDetails.length;
+	  
+	  for(int i=0; i<cartLength; i++) {
+		  for(String col: cartDetails[i])
+			  System.out.println(col);
+		  System.out.println();
+	  }
+	  
 	  // TODO: DDT on login functionality
   }
   
@@ -65,7 +97,7 @@ public class mainPageTest {
   @AfterTest
   public void afterTest() throws InterruptedException {
 	  Thread.sleep(3000);
-	  account.closeWebsite();
+	  page.closeWebsite();
   }
 
 }

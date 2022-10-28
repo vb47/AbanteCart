@@ -590,10 +590,10 @@ public class HomePage extends AbanteCart{
 	 * Description: Visits the product link.
 	 */
 	public void searchProductByName(String productName) {
-		productName = productName.toUpperCase();
 		super.openWebsite(super.getUrl());
 		driver.findElement(By.id("filter_keyword")).sendKeys(productName);
 		driver.findElement(By.xpath("//*[@id='search_form']/div/div/i")).click();
+		driver.findElement(By.xpath("//a[contains(text(), '"+productName+"')]")).click();
 	}
 	
 	/*
