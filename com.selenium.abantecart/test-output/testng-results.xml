@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-10-28T13:29:12 IST" name="Default suite" finished-at="2022-10-28T13:30:12 IST" duration-ms="60084">
+  <suite started-at="2022-10-30T19:44:24 IST" name="Default suite" finished-at="2022-10-30T19:45:09 IST" duration-ms="44820">
     <groups>
     </groups>
-    <test started-at="2022-10-28T13:29:12 IST" name="Default test" finished-at="2022-10-28T13:30:12 IST" duration-ms="60084">
+    <test started-at="2022-10-30T19:44:24 IST" name="Default test" finished-at="2022-10-30T19:45:09 IST" duration-ms="44820">
       <class name="testModules.mainPageTest">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testModules.mainPageTest@5ab956d7]" started-at="2022-10-28T13:29:12 IST" name="beforeTest" finished-at="2022-10-28T13:29:24 IST" duration-ms="11521" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testModules.mainPageTest@d86a6f]" started-at="2022-10-30T19:44:24 IST" name="beforeTest" finished-at="2022-10-30T19:44:34 IST" duration-ms="9695" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="fudduTest()[pri:0, instance:testModules.mainPageTest@5ab956d7]" started-at="2022-10-28T13:29:24 IST" name="fudduTest" finished-at="2022-10-28T13:30:09 IST" duration-ms="45463" status="PASS">
+        <test-method signature="fudduTest()[pri:0, instance:testModules.mainPageTest@d86a6f]" started-at="2022-10-30T19:44:34 IST" name="fudduTest" finished-at="2022-10-30T19:45:06 IST" duration-ms="32000" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fudduTest -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:testModules.mainPageTest@5ab956d7]" started-at="2022-10-28T13:30:09 IST" name="afterTest" finished-at="2022-10-28T13:30:12 IST" duration-ms="3012" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:testModules.mainPageTest@d86a6f]" started-at="2022-10-30T19:45:06 IST" name="afterTest" finished-at="2022-10-30T19:45:09 IST" duration-ms="3014" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->

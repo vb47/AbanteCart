@@ -98,7 +98,7 @@ public class AbanteCart {
 	public String[][] getCartDetails() {
 		String[][] cartList;
 		
-		this.openWebsite();
+		//this.openWebsite();
 		cart.click();
 		
 		int rowCount = driver.findElements(By.xpath("//table/tbody/tr/td[@class='name']/a")).size();

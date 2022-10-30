@@ -49,6 +49,9 @@ public class HomePage extends AbanteCart{
 	@FindBy(xpath = "//*[@id='categorymenu']/nav/ul/li[8]/a")
 	WebElement categoryBooksElement;
 	
+	@FindBy(id = "filter_keyword")
+	WebElement searchElement;
+	
 	public HomePage(WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -590,8 +593,9 @@ public class HomePage extends AbanteCart{
 	 * Description: Visits the product link.
 	 */
 	public void searchProductByName(String productName) {
-		super.openWebsite(super.getUrl());
-		driver.findElement(By.id("filter_keyword")).sendKeys(productName);
+		if(!searchElement.isDisplayed())
+			super.openWebsite();
+		searchElement.sendKeys(productName);
 		driver.findElement(By.xpath("//*[@id='search_form']/div/div/i")).click();
 		driver.findElement(By.xpath("//a[contains(text(), '"+productName+"')]")).click();
 	}

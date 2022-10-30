@@ -15,11 +15,14 @@ import modules.mainPage;
 import org.testng.annotations.BeforeTest;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 
 public class mainPageTest {
@@ -61,15 +64,17 @@ public class mainPageTest {
 	  page = new AbanteCart(driver);
 	  cart = new HomePage(driver);
 	  
+	  cart.openWebsite();
 	  cart.searchProductByName("ck one shock for him Deodorant");
 	  driver.findElement(By.id("product_quantity")).clear();
 	  driver.findElement(By.id("product_quantity")).sendKeys("3");
 	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
+	  Thread.sleep(3000);
 	  
-	  cart.searchProductByName("Jersey Cotton Striped Polo Shirt");
-	  driver.findElement(By.id("product_quantity")).clear();
-	  driver.findElement(By.id("product_quantity")).sendKeys("4");
-	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
+//	  cart.searchProductByName("Jersey Cotton Striped Polo Shirt");
+//	  driver.findElement(By.id("product_quantity")).clear();
+//	  driver.findElement(By.id("product_quantity")).sendKeys("4");
+//	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
 	  
 	  cart.searchProductByName("Armani Code Sport");
 	  driver.findElement(By.id("product_quantity")).clear();
@@ -91,13 +96,13 @@ public class mainPageTest {
   
   @BeforeTest
   public void beforeTest() {
-	  driver = new ChromeDriver();
+	  driver = new FirefoxDriver();
   }
 
   @AfterTest
   public void afterTest() throws InterruptedException {
 	  Thread.sleep(3000);
-	  page.closeWebsite();
+	  //page.closeWebsite();
   }
 
 }
