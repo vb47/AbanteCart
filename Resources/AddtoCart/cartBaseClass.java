@@ -95,6 +95,7 @@ public class cartBaseClass extends LoginPage{
 		super(driver);
 	}
 	
+	
 	public void addProductThroughCategory() throws InterruptedException {
 		  login("dhanush1","dhanush");  
 		  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
