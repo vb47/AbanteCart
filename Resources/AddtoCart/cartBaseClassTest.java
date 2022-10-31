@@ -14,14 +14,15 @@ public class cartBaseClassTest {
   @Test
   public void f() throws InterruptedException {  
 	  
-	 //cartbaseclass.addProductThroughCategory();
-	 //cartbaseclass.addProductToWishlist();
+	 cartbaseclass.addProductThroughCategory();
+	// cartbaseclass.addProductToWishlist();
 	 //cartbaseclass.removeProductFromWishlist(); 
 	 //cartbaseclass.addProductFromSpecials();
 	 //cartbaseclass.addProductFromWishlist();
 	 // cartbaseclass.addProductThroughSearch();
-	  cartbaseclass.callToOrderProduct();
+	 //cartbaseclass.callToOrderProduct();
   }
+  
   @BeforeTest
   public void beforeTest() throws InterruptedException{
 	  WebDriver driver = new ChromeDriver();
