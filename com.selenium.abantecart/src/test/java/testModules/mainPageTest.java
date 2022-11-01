@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import com.opencsv.exceptions.CsvValidationException;
 
 import modules.AbanteCart;
+import modules.CartCheckout;
 import modules.HomePage;
 import modules.UserAccount;
 import modules.mainPage;
@@ -60,36 +61,36 @@ public class mainPageTest {
 //	  Thread.sleep(3000);
 //	  account.logout();
 	  
-	  // Get Cart Details
-	  page = new AbanteCart(driver);
-	  cart = new HomePage(driver);
-	  
-	  cart.openWebsite();
-	  cart.searchProductByName("ck one shock for him Deodorant");
-	  driver.findElement(By.id("product_quantity")).clear();
-	  driver.findElement(By.id("product_quantity")).sendKeys("3");
-	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
-	  Thread.sleep(3000);
-	  
-//	  cart.searchProductByName("Jersey Cotton Striped Polo Shirt");
+	  // Code for testing getCartDetails()
+//	  // Get Cart Details
+//	  page = new AbanteCart(driver);
+//	  cart = new HomePage(driver);
+//	  
+//	  cart.openWebsite();
+//	  cart.searchProductByName("ck one shock for him Deodorant");
 //	  driver.findElement(By.id("product_quantity")).clear();
-//	  driver.findElement(By.id("product_quantity")).sendKeys("4");
+//	  driver.findElement(By.id("product_quantity")).sendKeys("3");
 //	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
+//	  Thread.sleep(3000);
+//
+//	  cart.searchProductByName("Armani Code Sport");
+//	  driver.findElement(By.id("product_quantity")).clear();
+//	  driver.findElement(By.id("product_quantity")).sendKeys("2");
+//	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
+//	  
+//	  String[][] cartDetails = page.getCartDetails();
+//	  
+//	  int cartLength = cartDetails.length;
+//	  
+//	  for(int i=0; i<cartLength; i++) {
+//		  for(String col: cartDetails[i])
+//			  System.out.println(col);
+//		  System.out.println();
+//	  }
 	  
-	  cart.searchProductByName("Armani Code Sport");
-	  driver.findElement(By.id("product_quantity")).clear();
-	  driver.findElement(By.id("product_quantity")).sendKeys("2");
-	  driver.findElement(By.xpath("//div[@class='productpagecart']/a")).click();
-	  
-	  String[][] cartDetails = page.getCartDetails();
-	  
-	  int cartLength = cartDetails.length;
-	  
-	  for(int i=0; i<cartLength; i++) {
-		  for(String col: cartDetails[i])
-			  System.out.println(col);
-		  System.out.println();
-	  }
+	  CartCheckout cc = new CartCheckout(driver);
+	  cc.testCurrency();
+	  cc.testCheckout();
 	  
 	  // TODO: DDT on login functionality
   }
