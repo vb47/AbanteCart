@@ -1,4 +1,4 @@
-package AbanteCart;
+package Login;
 
 import org.testng.annotations.Test;
 
@@ -18,22 +18,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
-import AbanteCart.LoginPage;
+
+import Login.page;
 
 public class test {
 	WebDriver driver;
-	LoginPage myWebsite;
-	String path = "C:\\Users\\Administrator\\Documents\\credentials.csv";
+	page myWebsite;
+	String path = "C:\\Users\\Administrator\\Documents\\AbanteCart\\credentials.csv";
 	
   @Test
-  public void f() throws CsvValidationException, IOException, InterruptedException,ArrayIndexOutOfBoundsException {
+  public void f() throws CsvValidationException, IOException, InterruptedException {
 	  myWebsite.login(path);
   }
   
   @BeforeTest
-  public void beforeTest() throws InterruptedException{
+  public void beforeTest() throws InterruptedException {
 	  driver = new ChromeDriver();
-	  myWebsite = new LoginPage(driver);
+	  myWebsite = new page(driver);
   }
 
   @AfterTest
