@@ -1,4 +1,4 @@
-package AbanteCart;
+package Login;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,10 +15,9 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 
-public class LoginPage {
+public class page {
 	public WebDriver driver;
-	
-	private String url = "http://localhost/abantecart-src-master/abantecart-src-master/public_html/ ";
+	private String url = "http://10.44.11.219/abantecart-src-master/abantecart-src-master/public_html/ ";
 	
 	@FindBy(id = "customer_menu_top")
 	public WebElement menubar;
@@ -37,10 +36,11 @@ public class LoginPage {
 	
 	@FindBy(xpath = "//*[@id='maincontainer']/div/div[2]/div[1]/div/ul/li[10]/a")
 	public WebElement logoutbutton;
-	@FindBy(xpath="//*[@id='maincontainer']/div/div/div/div[1]")
-	public WebElement msg;
 	
-	LoginPage(WebDriver driver) throws InterruptedException{
+	@FindBy(xpath = "//*[@id=\"customer_menu_top\"]/li/a/div")
+	public WebElement welmsg;
+	
+	page(WebDriver driver) throws InterruptedException{
 		this.driver = driver;
 		driver.get(url);
 		PageFactory.initElements(driver, this);
@@ -57,28 +57,25 @@ public class LoginPage {
 		loginname.sendKeys(username);
 		loginpassword.sendKeys(password);
 		loginbutton.click();
+		System.out.println();
 	}
 	
-	public void login(String path) throws CsvValidationException, IOException,ArrayIndexOutOfBoundsException {
+	public void login(String path) throws CsvValidationException, IOException {
 		CSVReader reader = new CSVReader(new FileReader(path));
 		  String[] nextLine;
 		  String username = "", password = "";
 		  while ((nextLine = reader.readNext()) != null) {
 		         if (nextLine != null) {
-		  //for(int i=1;i<=n;i++)
-		 
 		        	 username = nextLine[0];
 		             password = nextLine[1];
 		             this.login(username, password);
-		            // WebElement msg=driver.findElement(By.xpath("//*[@id=\"maincontainer\"]/div/div/div/div[1]"));
-		            // System.out.println(msg);
-		       String abc= msg.getText();	
-		       if (driver.findElement(By.xpath("//*[@id=\"customer_menu_top\"]/li/a")).getText().contains("Welcome"))
+//		             String abc=welmsg.getText();
+//		             System.out.println(abc);
+		         if(driver.findElement(By.xpath("//*[@id=\"customer_menu_top\"]/li/a")).getText().contains("Welcome")) 
+		        		 {   
 		             this.logout();
-		             
-		         
-		  
-	}
+		          } 
+		         }
 		  }
 	}
 	
