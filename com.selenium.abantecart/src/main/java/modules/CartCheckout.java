@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class CartCheckout extends UserAccount{
+public class CartCheckout extends HomePage{
 	WebDriver driver;
 
 	public CartCheckout(WebDriver driver){
@@ -23,7 +23,8 @@ public class CartCheckout extends UserAccount{
 	
 	public void testCurrency() {
 		//super.openWebsite(super.getUrl() + "index.php?rt=account/login");
-		super.login("admin", "admin");
+		//super.login("admin", "admin");
+		super.openWebsite();
 		Actions action = new Actions(driver);
 		WebElement element=driver.findElement(By.xpath("/html/body/div/header/div[2]/div/div[2]/ul/li/a/span"));
 		action.moveToElement(element).click().perform();
@@ -43,22 +44,40 @@ public class CartCheckout extends UserAccount{
 		action.moveToElement(usDollar).click().perform();
 	}
 	
-	public void testCheckout()
+	public void testCheckout(String productName) throws InterruptedException
 	  {
 		  super.openWebsite();
-		  driver.findElement(By.xpath("//*[@id=\"block_frame_featured_1769\"]/div/div[1]/div[2]/div[3]/a/i")).click();
-		  driver.findElement(By.xpath("//i[@class='fa fa-shopping-cart fa-fw']")).click();
+		  super.searchProductByName(productName);
+		  
+		  try {
+			  driver.findElement(By.xpath("//div[@class='productpagecart call_to_order']/a[1]")).click();
+		  }
+		  catch(Exception e) {
+			  driver.findElement(By.xpath("//div[@class='productpagecart']/a[1]")).click();
+		  }
+		  
+		  //driver.findElement(By.xpath("//*[@id=\"block_frame_featured_1769\"]/div/div[1]/div[2]/div[3]/a/i")).click();
+//		  Actions action = new Actions(driver);
+//		  action.moveToElement(driver.findElement(By.xpath("//a[@class='productcart']")));
 		  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		  //driver.findElement(By.xpath("//button[@data-dismiss='modal']")).click();
-		  //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		  Thread.sleep(1000);
+//		  driver.findElement(By.xpath("//a[@class='productcart']")).click();
+//		  //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		  Thread.sleep(2000);
+//		  //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		  //driver.findElement(By.xpath("//button[@data-dismiss='modal']")).click();
+//		  //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//		  driver.findElement(By.xpath("//*[@id=\"main_menu_top\"]/li[3]/a")).click();
+		  
 		  driver.findElement(By.id("cart_checkout1")).click(); // checkout btn1
+		  
 	//	  driver.findElement(By.id("cart_checkout2")).click(); //checkout btn2
 		  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		  
 //		  driver.findElement(By.xpath("//*[@id=\"PayFrm\"]/div[2]/div[2]/div/table/tbody/tr[2]/td[1]/label/div")).click(); //Local Delivery
 //		  driver.findElement(By.xpath("//*[@id=\"PayFrm\"]/div[2]/div/table/tbody/tr[4]/td[1]/label/div")).click(); //Flat Shipping Rate
 //		  driver.findElement(By.id("checkout_btn")).click();
 		  
+		  Thread.sleep(5000);
 		  File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		  String timestamp = new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
 	        

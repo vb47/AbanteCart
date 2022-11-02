@@ -595,7 +595,9 @@ public class HomePage extends AbanteCart{
 	public void searchProductByName(String productName) {
 		if(!searchElement.isDisplayed())
 			super.openWebsite();
-		searchElement.sendKeys(productName);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(super.ImplicitWaitTime));
+		assert(searchElement.isDisplayed());
+		driver.findElement(By.id("filter_keyword")).sendKeys(productName);
 		driver.findElement(By.xpath("//*[@id='search_form']/div/div/i")).click();
 		driver.findElement(By.xpath("//a[contains(text(), '"+productName+"')]")).click();
 	}

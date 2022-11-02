@@ -89,8 +89,10 @@ public class mainPageTest {
 //	  }
 	  
 	  CartCheckout cc = new CartCheckout(driver);
-	  cc.testCurrency();
-	  cc.testCheckout();
+	  //cc.testCurrency();
+	  cc.testCheckout("Skinsheen Bronzer Stick");
+	  cc.testCheckout("Delicate Oil-Free Powder Blush");
+	  //cc.testCheckout("Curls to straight Shampoo");
 	  
 	  // TODO: DDT on login functionality
   }
@@ -103,7 +105,7 @@ public class mainPageTest {
   @AfterTest
   public void afterTest() throws InterruptedException {
 	  Thread.sleep(3000);
-	  //page.closeWebsite();
+	  driver.close();
   }
 
 }
