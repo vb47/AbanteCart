@@ -140,13 +140,18 @@ public class UserAccount extends AbanteCart{
 	 * Description: Performs login operation using given credentials.
 	 * Return: Response message post login process
 	 */
-	public void login(String username, String password) {
-		super.openWebsite();
+	public void login(String username, String password) throws InterruptedException {
 		if(menubar.getText().contains("Login")) {
+			Thread.sleep(1000);
 			menubar.click();
+			Thread.sleep(2000);
 			login_name.sendKeys(username);
 			loginpassword.sendKeys(password);
 			loginbutton.click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			if(menubar.getText().contains("Login"))
+				System.out.println("Incorrect Credentials: Username: " + username + ", Password: " + password);
+			
 		}
 	}
 	
@@ -154,11 +159,14 @@ public class UserAccount extends AbanteCart{
 	 * method: logout
 	 * Description: performs logout operation.
 	 */
-	public void logout() {
+	public void logout() throws InterruptedException {
+		Thread.sleep(1000);
 		if(menubar.getText().contains("Welcome")) {
 			logoutmenu.click();
+			Thread.sleep(500);
 			logoutbutton.click();
 		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
 }

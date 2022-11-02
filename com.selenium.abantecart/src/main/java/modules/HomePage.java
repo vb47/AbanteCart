@@ -482,6 +482,7 @@ public class HomePage extends AbanteCart{
 	  	  		if(productName.length() > 1) {
 	  	  		//System.out.println(productName + " > " + productHref);
 	  	  		data.add(new String[] { "0", "0", productName, productHref });
+	  	  		
 	  	  		}
 	  	  	}
 	  	  	
