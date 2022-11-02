@@ -10,7 +10,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+
+import utilities.screenshot;
 
 /*
  * Class: HomePage
@@ -458,7 +461,7 @@ public class HomePage extends AbanteCart{
 	 */
 	public void generateProductList() {
 		File file = new File(datasetFilePath);
-		
+		screenshot ss = new screenshot(driver);
 		// Exception Handling for IOException, if file path is invalid.
 	    try {
 	        // FileWriter object with file as parameter
@@ -482,7 +485,7 @@ public class HomePage extends AbanteCart{
 	  	  		if(productName.length() > 1) {
 	  	  		//System.out.println(productName + " > " + productHref);
 	  	  		data.add(new String[] { "0", "0", productName, productHref });
-	  	  		
+//	  	  		ss.takeScreenshot("Product_" + "0" + "0" + i);
 	  	  		}
 	  	  	}
 	  	  	
@@ -496,6 +499,7 @@ public class HomePage extends AbanteCart{
 		  	  	if(productName.length() > 1) {
 		  	  		//System.out.println(productName + " > " + productHref);
 		  	  		data.add(new String[] { "1", Integer.toString(i), productName, productHref });
+//		  	  		ss.takeScreenshot("Product_" + "1" + Integer.toString(i) + i);
 		  	  		}
 		  	  	}
 	  	  	}
@@ -509,6 +513,7 @@ public class HomePage extends AbanteCart{
 			  	  	if(productName.length() > 1) {
 			  	  		//System.out.println(productName + " > " + productHref);
 			  	  		data.add(new String[] { "2", Integer.toString(i), productName, productHref });
+//			  	  	ss.takeScreenshot("Product_" + "2" + Integer.toString(i) + i);
 		  	  		}
 		  	  	}
 	  		}
@@ -522,6 +527,7 @@ public class HomePage extends AbanteCart{
 			  	  	if(productName.length() > 1) {
 			  	  		//System.out.println(productName + " > " + productHref);
 			  	  		data.add(new String[] { "3", Integer.toString(i), productName, productHref });
+//			  	  	ss.takeScreenshot("Product_" + "3" + Integer.toString(i) + i);
 			  	  	}
 		  	  	}
 	  	  	}
@@ -535,6 +541,7 @@ public class HomePage extends AbanteCart{
 			  	  	if(productName.length() > 1) {
 			  	  		//System.out.println(productName + " > " + productHref);
 			  	  		data.add(new String[] { "4", Integer.toString(i), productName, productHref });
+//			  	  	ss.takeScreenshot("Product_" + "4" + Integer.toString(i) + i);
 			  	  	}
 	  	  		}	
 		  	}
@@ -548,6 +555,7 @@ public class HomePage extends AbanteCart{
 			  	  	if(productName.length() > 1) {
 			  	  		//System.out.println(productName + " > " + productHref);
 			  	  		data.add(new String[] { "5", Integer.toString(i), productName, productHref });
+//			  	  	ss.takeScreenshot("Product_" + "5" + Integer.toString(i) + i);
 			  	  	}
 			  	 }	
 			  }
@@ -561,6 +569,7 @@ public class HomePage extends AbanteCart{
 			  	  	if(productName.length() > 1) {
 			  	  		//System.out.println(productName + " > " + productHref);
 			  	  		data.add(new String[] { "6", Integer.toString(i), productName, productHref });
+//			  	  	ss.takeScreenshot("Product_" + "6" + Integer.toString(i) + i);
 			  	  	}
 			  	}
 			}
@@ -574,6 +583,7 @@ public class HomePage extends AbanteCart{
 				  	if(productName.length() > 1) {
 				  		//System.out.println(productName + " > " + productHref);
 				  	  	data.add(new String[] { "7", Integer.toString(i), productName, productHref });
+//				  	  ss.takeScreenshot("Product_" + "7" + Integer.toString(i) + i);
 				  	} 
 				}	
 		  	}
@@ -614,6 +624,37 @@ public class HomePage extends AbanteCart{
 		driver.findElement(By.xpath("//a[contains(text(),\""+productName+"\")]")).click();
 		String priceOfProduct = driver.findElement(By.className("productfilneprice")).getText();
 		return Double.parseDouble(priceOfProduct.substring(1));
+	}
+	
+	public void getScreenshotOfAllProducts() {
+		screenshot ss = new screenshot(driver);
+		try {
+			  
+	        // Create an object of filereader
+	        // class with CSV file as a parameter.
+	        FileReader filereader = new FileReader("./data/datasets/productList.csv");
+	  
+	        // create csvReader object passing
+	        // file reader as a parameter
+	        CSVReader csvReader = new CSVReader(filereader);
+	        String[] nextRecord;
+	        String link;
+	        int count = 0;
+	        // skipping headers
+	        nextRecord = csvReader.readNext();
+	        // we are going to read data line by line
+	        while ((nextRecord = csvReader.readNext()) != null) {
+	            link = nextRecord[3];
+	            System.out.println(count + link);
+	            driver.get(link);
+	            Thread.sleep(3000);
+	            ss.takeScreenshot("product_"+nextRecord[0] + nextRecord[1] + count++);
+	        }
+	        csvReader.close();
+	    }
+	    catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 	
 	// TODO: testSocialMediaIcons baki reh gaya maa. 

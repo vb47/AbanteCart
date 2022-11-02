@@ -34,9 +34,10 @@ public class mainPageTest {
 	
   @Test
   public void fudduTest() throws CsvValidationException, IOException, InterruptedException{
-//	  //Test Cases for Home Page
-//	  cart = new HomePage(driver);
-//	  //cart.generateProductList();
+	  //Test Cases for Home Page
+	  cart = new HomePage(driver);
+	  //cart.generateProductList();
+	  cart.getScreenshotOfAllProducts();
 //	  
 //	  cart.searchProductByName("ck one shock for him Deodorant");
 //	  
@@ -88,10 +89,10 @@ public class mainPageTest {
 //		  System.out.println();
 //	  }
 	  
-	  CartCheckout cc = new CartCheckout(driver);
-	  //cc.testCurrency();
-	  cc.testCheckout("Skinsheen Bronzer Stick");
-	  cc.testCheckout("Delicate Oil-Free Powder Blush");
+//	  CartCheckout cc = new CartCheckout(driver);
+//	  //cc.testCurrency();
+//	  cc.testCheckout("Skinsheen Bronzer Stick");
+//	  cc.testCheckout("Delicate Oil-Free Powder Blush");
 	  //cc.testCheckout("Curls to straight Shampoo");
 	  
 	  // TODO: DDT on login functionality
