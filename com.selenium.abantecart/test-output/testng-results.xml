@@ -2,85 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-11-02T23:13:05 IST" name="Default suite" finished-at="2022-11-02T23:14:24 IST" duration-ms="78982">
+  <suite started-at="2022-11-03T11:02:14 IST" name="Default suite" finished-at="2022-11-03T11:02:27 IST" duration-ms="13357">
     <groups>
     </groups>
-    <test started-at="2022-11-02T23:13:05 IST" name="Default test" finished-at="2022-11-02T23:14:24 IST" duration-ms="78982">
-      <class name="testModules.mainPageTest">
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testModules.mainPageTest@4145bad8]" started-at="2022-11-02T23:13:05 IST" name="beforeTest" finished-at="2022-11-02T23:13:11 IST" duration-ms="6024" status="PASS">
+    <test started-at="2022-11-03T11:02:14 IST" name="Default test" finished-at="2022-11-03T11:02:27 IST" duration-ms="13357">
+      <class name="testModules.HomePageTest">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testModules.HomePageTest@1e6a3214]" started-at="2022-11-03T11:02:14 IST" name="beforeTest" finished-at="2022-11-03T11:02:22 IST" duration-ms="7405" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method signature="fudduTest()[pri:0, instance:testModules.mainPageTest@4145bad8]" started-at="2022-11-02T23:13:11 IST" name="fudduTest" finished-at="2022-11-02T23:14:21 IST" duration-ms="69832" status="PASS">
+        <test-method signature="checkProductByCategory()[pri:0, instance:testModules.HomePageTest@1e6a3214]" started-at="2022-11-03T11:02:22 IST" name="checkProductByCategory" finished-at="2022-11-03T11:02:27 IST" duration-ms="5844" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- fudduTest -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:testModules.mainPageTest@4145bad8]" started-at="2022-11-02T23:14:21 IST" name="afterTest" finished-at="2022-11-02T23:14:24 IST" duration-ms="3041" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchSessionException">
-            <message>
-              <![CDATA[Tried to run command without establishing a connection
-Build info: version: '4.4.0', revision: 'e5c75ed026a'
-System info: host: 'V-FRONTEND', ip: '10.44.8.214', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [f74ac218-55cb-4ffb-a5cc-bfb9d5e1bda0, close {}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 104.0.1, moz:accessibilityChecks: false, moz:buildID: 20220829141339, moz:debuggerAddress: localhost:52844, moz:geckodriverVersion: 0.31.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 14720, moz:profile: C:\Users\ADMINI~1\AppData\L..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52844/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: f74ac218-55cb-4ffb-a5cc-bfb9d5e1bda0]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchSessionException: Tried to run command without establishing a connection
-Build info: version: '4.4.0', revision: 'e5c75ed026a'
-System info: host: 'V-FRONTEND', ip: '10.44.8.214', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [f74ac218-55cb-4ffb-a5cc-bfb9d5e1bda0, close {}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 104.0.1, moz:accessibilityChecks: false, moz:buildID: 20220829141339, moz:debuggerAddress: localhost:52844, moz:geckodriverVersion: 0.31.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 14720, moz:profile: C:\Users\ADMINI~1\AppData\L..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52844/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: f74ac218-55cb-4ffb-a5cc-bfb9d5e1bda0
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:606)
-at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:432)
-at testModules.mainPageTest.afterTest(mainPageTest.java:109)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:361)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:296)
-at org.testng.TestRunner.invokeTestConfigurations(TestRunner.java:643)
-at org.testng.TestRunner.afterRun(TestRunner.java:891)
-at org.testng.TestRunner.run(TestRunner.java:604)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:433)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:427)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:387)
-at org.testng.SuiteRunner.run(SuiteRunner.java:330)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
-at org.testng.TestNG.runSuites(TestNG.java:1099)
-at org.testng.TestNG.run(TestNG.java:1067)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
+        </test-method> <!-- checkProductByCategory -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:testModules.HomePageTest@1e6a3214]" started-at="2022-11-03T11:02:27 IST" name="afterTest" finished-at="2022-11-03T11:02:27 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- testModules.mainPageTest -->
+      </class> <!-- testModules.HomePageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

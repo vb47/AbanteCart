@@ -36,8 +36,9 @@ public class mainPageTest {
   public void fudduTest() throws CsvValidationException, IOException, InterruptedException{
 	  //Test Cases for Home Page
 	  cart = new HomePage(driver);
+	  cart.openWebsite();
 	  //cart.generateProductList();
-	  cart.getScreenshotOfAllProducts();
+	  //cart.getScreenshotOfAllProducts();
 //	  
 //	  cart.searchProductByName("ck one shock for him Deodorant");
 //	  
@@ -100,7 +101,7 @@ public class mainPageTest {
   
   @BeforeTest
   public void beforeTest() {
-	  driver = new FirefoxDriver();
+	  driver = new ChromeDriver();
   }
 
   @AfterTest

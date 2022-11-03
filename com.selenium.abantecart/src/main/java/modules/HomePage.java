@@ -607,10 +607,28 @@ public class HomePage extends AbanteCart{
 		if(!searchElement.isDisplayed())
 			super.openWebsite();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(super.ImplicitWaitTime));
-		assert(searchElement.isDisplayed());
 		driver.findElement(By.id("filter_keyword")).sendKeys(productName);
+		
 		driver.findElement(By.xpath("//*[@id='search_form']/div/div/i")).click();
 		driver.findElement(By.xpath("//a[contains(text(), '"+productName+"')]")).click();
+	}
+	
+	public String getProductDetails(String productName) {
+		this.searchProductByName(productName);
+		driver.findElement(By.xpath("//a[contains(text(),\""+productName+"\")]")).click();
+		String priceOfProduct = driver.findElement(By.className("productfilneprice")).getText();
+		String title = driver.findElement(By.xpath("//h1")).getText();
+		Double price = Double.parseDouble(priceOfProduct.substring(1));
+		String availability;
+		
+		if (driver.findElement(By.xpath("//*[contains(@class, 'productpagecart')]")).getText().contains("Add"))
+			availability = "In Stock";
+		else if(driver.findElement(By.xpath("//*[contains(@class, 'productpagecart')]")).getText().contains("Call")) 
+			availability = "Make a call";
+		else
+			availability = "Out of Stock";
+		
+		return String.format("Product Name: %s\nProduct Price %f\nProduct Availability: %s", title, price, availability);
 	}
 	
 	/*
