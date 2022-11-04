@@ -1,15 +1,26 @@
 package projectpom;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -57,6 +68,7 @@ public class page {
 	String url = "http://localhost/abantecart-src-master/abantecart-src-master/public_html/index.php?rt=account/login";
 	private CSVReader csvreader;
 	String[] csvcell;
+	static Logger log = LogManager.getLogger(page.class);
 	
 	page (WebDriver dev)
 	{
@@ -70,13 +82,18 @@ public class page {
 	public void userRegistration(String path) throws IOException ,  InterruptedException,CsvValidationException {
 		 csvreader = new CSVReader(new FileReader(path));
 		 
+		
 		 while((csvcell = csvreader.readNext())!= null)
 		  {
 			 driver.get(url);
+			
+			log.debug("Opening website");
 			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			 radio.click();
 			 countinue1.click();
+			 log.debug("registration");
 			 agree.click();
+			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); 
 			 firstname.sendKeys(csvcell[0]);
 			 lastname.sendKeys(csvcell[1]);
 			 email.sendKeys(csvcell[2]);
@@ -92,11 +109,17 @@ public class page {
 			 loginname.sendKeys(csvcell[8]);
 			 password.sendKeys(csvcell[9]);
 			 confirm.sendKeys(csvcell[10]);
+			 
+		
+	            
+	            //Copy the file to a location and use try catch block to handle exception
+	            
 			
 			 register.click();
-			 Thread.sleep(1000);
+		//	 Thread.sleep(1000);
+			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); 
 			 System.out.println( error.getText());
-			 
+			 log.debug("error message");
 			//Thread.sleep(1000);
 			// firstname.clear();
 			// lastname.clear();
@@ -110,18 +133,35 @@ public class page {
 			// agree.clear();
 			 
 			 //Thread.sleep(1000);
-			 System.out.println(success);
+			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	          String timestamp = new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
+			 try {
+	                FileUtils.copyFile(screenshot, new File("C:\\\\Users\\\\Administrator\\\\Pictures\\\\projectScreenshots\\" + "order1"+" "+timestamp+".png"));
+	               // FileUtils.copyFile(screenshot, new File("C:\\Users\\Administrator\\Pictures\\projectScreenshots\\order.png"));
+	            } catch (IOException e) {
+	                System.out.println(e.getMessage());
+	            }
+			
+			
+			 log.info(success);
+			
 			 if (driver.findElement(By.xpath("//*[@id=\"customer_menu_top\"]/li/a")).getText().contains("Welcome")) {
-				 System.out.println("Bypassing auto login.");
+				 log.debug("Bypassing auto login.");
 				 driver.findElement(By.xpath("//*[@id=\"customer_menu_top\"]/li/a")).click();
-				// driver.findElement(By.xpath("//*[@id=\"maincontainer\"]/div/div[2]/div[1]/div/ul/li[10]/a")).click();
-			 
+				 driver.findElement(By.xpath("//*[@id=\"maincontainer\"]/div/div[2]/div[1]/div/ul/li[10]/a")).click();
+			 log.info("logged out");
+			 break;
 		  }
-		}
+		                
+		 }
 		        
 		  }
 		// System.out.println(success);
 		//continue1.click();
 	  }
+	            	 
+	
+
 	            	 
 	
