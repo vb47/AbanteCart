@@ -53,7 +53,8 @@ public class HomePage extends AbanteCart{
 	WebElement categoryBooksElement;
 	
 	@FindBy(id = "filter_keyword")
-	WebElement searchElement;
+	private WebElement searchElement;
+	
 	
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -73,7 +74,7 @@ public class HomePage extends AbanteCart{
 		int i=0;
 		List<WebElement> productsOnPage;
 		String[] list;
-		
+		String link;
 		super.openWebsite();
 		
 		switch(categoryIndex) {
@@ -84,7 +85,10 @@ public class HomePage extends AbanteCart{
 			
 			for(WebElement product: productsOnPage) {
 				list[i++] = product.getText();
-				list[i++] = product.getAttribute("href");
+				link = product.getAttribute("href");
+				System.out.println(link);
+				list[i++] = link;
+				list[i++] = link.substring(link.lastIndexOf("=") + 1);
 			}
 		break;
 		
@@ -95,10 +99,12 @@ public class HomePage extends AbanteCart{
 				actions.moveToElement(driver.findElement(By.xpath("//a[text()='Shoes']"))).click().perform();
 				productsOnPage = driver.findElements(By.className("prdocutname"));
 				list = new String[2*productsOnPage.size()];
-				
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -110,6 +116,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -120,6 +129,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			}
@@ -138,6 +150,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -149,6 +164,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -160,6 +178,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -171,6 +192,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -182,6 +206,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -193,6 +220,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -203,6 +233,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			}
@@ -219,6 +252,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -230,6 +266,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -241,6 +280,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -252,6 +294,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -263,6 +308,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -273,6 +321,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			}
@@ -289,6 +340,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -300,6 +354,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -310,6 +367,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			}
@@ -326,6 +386,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -337,6 +400,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -348,6 +414,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage) {
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -359,6 +428,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 				
@@ -369,6 +441,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			}
@@ -385,6 +460,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -396,6 +474,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -406,6 +487,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			}
@@ -422,6 +506,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -433,6 +520,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			
@@ -443,6 +533,9 @@ public class HomePage extends AbanteCart{
 				for(WebElement product: productsOnPage){
 					list[i++] = product.getText();
 					list[i++] = product.getAttribute("href");
+					link = product.getAttribute("href");
+					list[i++] = link;
+					list[i++] = link.substring(link.lastIndexOf("=") + 1);
 				}
 				break;
 			}
@@ -461,7 +554,6 @@ public class HomePage extends AbanteCart{
 	 */
 	public void generateProductList() {
 		File file = new File(datasetFilePath);
-		screenshot ss = new screenshot(driver);
 		// Exception Handling for IOException, if file path is invalid.
 	    try {
 	        // FileWriter object with file as parameter
@@ -472,19 +564,20 @@ public class HomePage extends AbanteCart{
 	  
 	        // List which contains String array to add data row-wise to csv file
 	        List<String[]> data = new ArrayList<String[]>();
-	        data.add(new String[] { "Category Index", "Sub-Category Index", "Product Name", "href link" });
+	        data.add(new String[] { "Category Index", "Sub-Category Index", "Product Name", "href link", "Product Id" });
 	        
 	        // inserting data to csv object
-	        String productName = "", productHref = "";
+	        String productName = "", productHref = "", productId = "";
 	        
 	        // Category: (0, 0)
 	        String[] productList = this.getProductList(0, 0);
 	  	  	for(int i=0;i<productList.length; i++) {
 	  	  		productName = productList[i++];
-	  	  		productHref = productList[i];
+	  	  		productHref = productList[i++];
+	  	  		productId = productList[i];
 	  	  		if(productName.length() > 1) {
 	  	  		//System.out.println(productName + " > " + productHref);
-	  	  		data.add(new String[] { "0", "0", productName, productHref });
+	  	  		data.add(new String[] { "0", "0", productName, productHref, productId });
 //	  	  		ss.takeScreenshot("Product_" + "0" + "0" + i);
 	  	  		}
 	  	  	}
